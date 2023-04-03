@@ -27,6 +27,6 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    App\Presentation\Api\Borders\Controller\:
-        resource: '../src/Presentation/Api/Borders/Controller/'
+    App\Presentation\Api\Border\Controllers\:
+        resource: '../src/Presentation/Api/Border/Controllers/'
         tags: [ 'controller.service_arguments' ]

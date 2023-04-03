@@ -1,5 +1,5 @@
 borders-controllers:
-    resource: '../../../src/Presentation/Api/Borders/Controller/'
+    resource: '../../../src/Presentation/Api/Border/Controllers/'
     type: attribute
     prefix: /borders
     defaults:

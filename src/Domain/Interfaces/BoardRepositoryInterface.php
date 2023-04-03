@@ -9,7 +9,12 @@ declare(strict_types=1);
 
 namespace App\Domain\Interfaces;
 
+use App\Domain\Cases\Board\DTO\GetAllRequest;
 
-interface ControllerInterface
+interface BoardRepositoryInterface
 {
+    /**
+     * @return array|\App\Domain\Entities\Board[]
+     */
+    public function getAllBoards(GetAllRequest $request): array;
 }
