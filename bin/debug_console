@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+export XDEBUG_SESSION=PHPSTORM
+./bin/console $@
+unset XDEBUG_SESSION

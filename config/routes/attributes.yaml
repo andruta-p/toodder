@@ -1,0 +1,9 @@
+#kernel:
+#  resource: App\Kernel
+#  type: attribute
+#
+#borders-controllers:
+#    resource: '../../src/Presentation/Api/Borders/Controller/'
+#    type: attribute
+#    defaults:
+#        _format: json
