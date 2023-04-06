@@ -1,9 +1,7 @@
 <?php
 /**
- * @link https://gepard.io
- * @copyright 2023 (c) Bintime
  * @package App\Domain\Components
- * @author Andriy Proskurniak <a.proskurniak@gepard.io>
+ * @author andruta-p <andruta.p@gmail.com>
  */
 declare(strict_types=1);
 

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <doctrine-mapping xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping"
                   xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
@@ -6,7 +7,7 @@
     <entity name="App\Domain\Entities\Board"
             table="boards"
             repository-class="App\Infrastructure\Persistence\Doctrine\Repositories\BoardRepository">
-    >
+        >
         <id name="id" type="integer">
             <generator strategy="AUTO"/>
         </id>

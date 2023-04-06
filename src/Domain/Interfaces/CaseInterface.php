@@ -1,17 +1,16 @@
 <?php
 /**
- * @link https://gepard.io
- * @copyright 2023 (c) Bintime
  * @package App\Domain\Interfaces
- * @author Andriy Proskurniak <a.proskurniak@gepard.io>
+ * @author andruta-p <andruta.p@gmail.com>
  */
 declare(strict_types=1);
 
 namespace App\Domain\Interfaces;
 
 use App\Domain\Components\BaseDTO;
+use App\Domain\Components\ValidatedRequest;
 
 interface CaseInterface
 {
-    public function execute(BaseDTO $requestDto): BaseDTO;
+    public function execute(ValidatedRequest $requestDto): BaseDTO;
 }

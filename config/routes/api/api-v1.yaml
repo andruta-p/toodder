@@ -1,6 +1,6 @@
-borders-controllers:
-    resource: '../../../src/Presentation/Api/Border/Controllers/'
-    type: attribute
-    prefix: /borders
-    defaults:
-        _format: json
+boards-controllers:
+  resource: '../../../src/Presentation/Api/Border/Controllers/'
+  type: attribute
+  prefix: /boards
+  defaults:
+    _format: json

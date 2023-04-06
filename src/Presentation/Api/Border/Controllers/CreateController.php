@@ -1,9 +1,7 @@
 <?php
 /**
- * @link https://gepard.io
- * @copyright 2023 (c) Bintime
  * @package App\Infrastructure\Api\Controllers
- * @author Andriy Proskurniak <a.proskurniak@gepard.io>
+ * @author andruta-p <andruta.p@gmail.com>
  */
 declare(strict_types=1);
 
@@ -21,11 +19,9 @@ class CreateController implements ControllerInterface
     }
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    #[Route('/create', name: 'api.border.create', methods: ['POST'])]
+    #[Route('', name: 'api.border.create', methods: ['POST'])]
     public function handle(): JsonResponse
     {
         return new JsonResponse(['message' => 'Created'], Response::HTTP_CREATED);

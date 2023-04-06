@@ -1,9 +1,7 @@
 <?php
 /**
- * @link https://gepard.io
- * @copyright 2023 (c) Bintime
  * @package App\Domain\Cases\Board
- * @author Andriy Proskurniak <a.proskurniak@gepard.io>
+ * @author andruta-p <andruta.p@gmail.com>
  */
 declare(strict_types=1);
 
@@ -12,6 +10,7 @@ namespace App\Domain\Cases\Board;
 use App\Domain\Cases\Board\DTO\GetAllBoardsResponse;
 use App\Domain\Cases\Board\DTO\GetAllRequest;
 use App\Domain\Components\BaseDTO;
+use App\Domain\Components\ValidatedRequest;
 use App\Domain\Interfaces\BoardRepositoryInterface;
 use App\Domain\Interfaces\CaseInterface;
 
@@ -26,15 +25,22 @@ class GetAllBoardsCase implements CaseInterface
      *
      * @return \App\Domain\Cases\Board\DTO\GetAllBoardsResponse
      */
-    public function execute(BaseDTO $requestDto): BaseDTO
+    public function execute(ValidatedRequest $requestDto): BaseDTO
     {
         $boards = $this->boardRepository->getAllBoards($requestDto);
 
-        $boardDtos = [];
+        $dtoSet = [];
         foreach ($boards as $boardEntity) {
-            $boardDtos[] = new DTO\Board($boardEntity);
+            $dtoSet[] = new DTO\Board(
+                [
+                    'name' => $boardEntity->getName(),
+                    'description' => $boardEntity->getDescription(),
+                    'createdAt' => $boardEntity->getCreatedAt(),
+                    'updatedAt' => $boardEntity->getUpdatedAt(),
+                ]
+            );
         }
 
-        return new GetAllBoardsResponse($boardDtos);
+        return new GetAllBoardsResponse($dtoSet);
     }
 }

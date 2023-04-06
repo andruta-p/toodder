@@ -1,9 +1,7 @@
 <?php
 /**
- * @link https://gepard.io
- * @copyright 2023 (c) Bintime
  * @package App\Domain\Cases\Board\DTO
- * @author Andriy Proskurniak <a.proskurniak@gepard.io>
+ * @author andruta-p <andruta.p@gmail.com>
  */
 declare(strict_types=1);
 
@@ -17,12 +15,4 @@ final class Board extends BaseDTO
     protected string $description;
     protected \DateTime $createdAt;
     protected \DateTime $updatedAt;
-
-    public function __construct(\App\Domain\Entities\Board $board)
-    {
-        $this->name = $board->getName();
-        $this->description = $board->getDescription();
-        $this->createdAt = $board->getCreatedAt();
-        $this->updatedAt = $board->getUpdatedAt();
-    }
 }

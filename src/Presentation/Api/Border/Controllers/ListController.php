@@ -1,9 +1,7 @@
 <?php
 /**
- * @link https://gepard.io
- * @copyright 2023 (c) Bintime
  * @package App\Infrastructure\Api\Controllers
- * @author Andriy Proskurniak <a.proskurniak@gepard.io>
+ * @author andruta-p <andruta.p@gmail.com>
  */
 declare(strict_types=1);
 
@@ -20,29 +18,30 @@ use Symfony\Component\Routing\Annotation\Route;
 class ListController implements ControllerInterface
 {
     public function __construct(
-        private readonly GetAllBoardsCase $case
+        private readonly GetAllBoardsCase $case,
     ) {
     }
 
     /**
-     * @param int $page
-     * @param int $limit
+     * @param \App\Domain\Cases\Board\DTO\GetAllRequest $request
      *
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
     #[Route(
         path: '',
         name: 'api.border.list',
-        requirements: ['page' => '\d+'],
-        defaults: ['page' => 1],
         methods: [Request::METHOD_GET]
     )]
-    public function handle(int $page = 1, int $limit = 1): JsonResponse
+    public function handle(GetAllRequest $request): JsonResponse
     {
-        $dto = new GetAllRequest(...['page' => $page, 'limit' => $limit]);
+        $errors = $request->validate();
+
+        if (count($errors) > 0) {
+            return new JsonResponse($errors, Response::HTTP_BAD_REQUEST);
+        }
 
         try {
-            $result = $this->case->execute($dto);
+            $result = $this->case->execute($request);
         } catch (\Exception $e) {
             return new JsonResponse(['error' => true, 'message' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
         }

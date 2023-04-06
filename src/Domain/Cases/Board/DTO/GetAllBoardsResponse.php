@@ -1,9 +1,7 @@
 <?php
 /**
- * @link https://gepard.io
- * @copyright 2023 (c) Bintime
  * @package App\Domain\Cases\Board\DTO
- * @author Andriy Proskurniak <a.proskurniak@gepard.io>
+ * @author andruta-p <andruta.p@gmail.com>
  */
 declare(strict_types=1);
 
@@ -13,17 +11,15 @@ use App\Domain\Components\BaseDTO;
 
 final class GetAllBoardsResponse extends BaseDTO
 {
-    protected array $boards;
+    protected array $boards = [];
 
     /**
      * @var \App\Domain\Cases\Board\DTO\Board[] $boards
      */
     public function __construct(
-        array $boards = []
+        array $data = []
     ) {
-        foreach ($boards as $board) {
-            $this->boards[] = $board->jsonSerialize();
-        }
+        parent::__construct(['boards' => $data]);
     }
 
     /**

@@ -1,26 +1,28 @@
 <?php
 /**
- * @link https://gepard.io
- * @copyright 2023 (c) Bintime
  * @package App\Domain\Cases\Board\DTO
- * @author Andriy Proskurniak <a.proskurniak@gepard.io>
+ * @author andruta-p <andruta.p@gmail.com>
  */
 declare(strict_types=1);
 
 namespace App\Domain\Cases\Board\DTO;
 
-use App\Domain\Components\BaseDTO;
+use App\Domain\Components\ValidatedRequest;
+use Symfony\Component\Validator\Constraints as Assert;
 
-final class GetAllRequest extends BaseDTO
+final class GetAllRequest extends ValidatedRequest
 {
-    public function __construct(
-        protected readonly int $page = 1,
-        protected readonly int $limit = 5,
-    ) {}
+    #[Assert\Type(type: 'integer', message: 'Page number must be integer')]
+    #[Assert\Positive(message: 'Page number must be positive integer')]
+    protected $page = 1;
+
+    #[Assert\Type(type: 'integer', message: 'Limit must be integer')]
+    #[Assert\Positive(message: 'Limit must be positive integer')]
+    protected $limit = 5;
 
     public function getPage(): int
     {
-        return $this->page;
+        return (int)$this->page;
     }
 
     /**
@@ -28,7 +30,7 @@ final class GetAllRequest extends BaseDTO
      */
     public function getLimit(): int
     {
-        return $this->limit;
+        return (int)$this->limit;
     }
 
 }
