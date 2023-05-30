@@ -30,6 +30,7 @@ class ListController implements ControllerInterface
     #[Route(
         path: '',
         name: 'api.border.list',
+        requirements: ['page' => '\d+', 'limit' => '\d+'],
         methods: [Request::METHOD_GET]
     )]
     public function handle(GetAllRequest $request): JsonResponse
